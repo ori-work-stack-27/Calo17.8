@@ -243,16 +243,18 @@ const ToolBar: React.FC<ToolBarProps> = ({ helpContent }) => {
   return (
     <>
       {/* Backdrop */}
-      <Animated.View
-        style={[styles.backdrop, backdropStyle]}
-        pointerEvents={isExpanded ? "auto" : "none"}
-      >
-        <TouchableOpacity
-          style={StyleSheet.absoluteFillObject}
-          onPress={handleToggleMenu}
-          activeOpacity={1}
-        />
-      </Animated.View>
+      {isExpanded && (
+        <Animated.View
+          style={[styles.backdrop, backdropStyle]}
+          pointerEvents="auto"
+        >
+          <TouchableOpacity
+            style={StyleSheet.absoluteFillObject}
+            onPress={handleToggleMenu}
+            activeOpacity={1}
+          />
+        </Animated.View>
+      )}
 
       {/* Main Container */}
       <View style={[styles.container, toolbarPosition]}>
@@ -380,6 +382,7 @@ const ToolBar: React.FC<ToolBarProps> = ({ helpContent }) => {
         transparent
         animationType="none"
         onRequestClose={handleCloseHelp}
+        statusBarTranslucent={false}
       >
         <BlurView intensity={100} style={styles.modalContainer}>
           <TouchableOpacity
@@ -545,6 +548,7 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   modalContent: {
+    position: "absolute",
     maxWidth: 420,
     maxHeight: "80%",
     borderRadius: 24,

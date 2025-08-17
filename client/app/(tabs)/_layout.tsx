@@ -127,15 +127,6 @@ export default function TabLayout() {
               }}
             />
             <Tabs.Screen
-              name="questionnaire"
-              options={{
-                title: t("tabs.questionnaire"),
-                tabBarIcon: ({ color }) => (
-                  <IconSymbol size={24} name="doc.text.fill" color={color} />
-                ),
-              }}
-            />
-            <Tabs.Screen
               name="profile"
               options={{
                 title: t("tabs.profile"),
